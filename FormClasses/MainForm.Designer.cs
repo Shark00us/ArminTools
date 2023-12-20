@@ -362,19 +362,7 @@ namespace ArminTools
 
 		}
 		
-		private void SetControlTexts()
-		{
-			this.selectPathButton.Text = appLang.SelectPath;
-			this.labelUnitSize.Text = appLang.SizeUnit;
-			this.labelCredit.Text = appLang.Creator;
-			this.buttonStartGrouping.Text = appLang.StartGrouping;
-			this.buttonStratExtracting.Text = appLang.StartExtracting;
-			this.buttonStartExtChanger.Text = appLang.StartExtChanging;
-			this.labelExtFrom.Text = appLang.ExtFrom;
-			this.labelExtTo.Text = appLang.ExtFrom;
-			this.textBoxPath.Text = appLang.PathPlaceholder;
-			this.labelHiddenChange.Text = appLang.ExtHiddenChange;
-		}
+
 	}
 }
 

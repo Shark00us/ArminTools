@@ -71,7 +71,9 @@
   <ItemGroup>
     <Compile Include="CoreClasses\FileGrouper.cs" />
     <Compile Include="CoreClasses\Program.cs" />
-    <Compile Include="FormClasses\MainForm.cs" />
+    <Compile Include="FormClasses\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FormClasses\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
@@ -96,13 +98,6 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="CoreClasses" />
-    <Folder Include="SubClasses" />
-    <Folder Include="SubClasses\Languages" />
-    <Folder Include="SubClasses\SizeUnit" />
-    <Folder Include="UtilityClasses" />
-    <Folder Include="FormClasses" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
