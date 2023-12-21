@@ -1,9 +1,4 @@
-﻿/*
- * User: Armin
- * Date: 11/21/2023
- * Time: 08:39 ب.ظ
- */
-using System;
+﻿using System;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
@@ -26,6 +21,8 @@ namespace ArminTools
         {
             InitializeComponent();
             SetControlTexts();
+            SetFont();
+            IsRTL(appLang.RTL);
         }
 
         //Methods
@@ -33,7 +30,7 @@ namespace ArminTools
         private void EnableControls()
         {
             textBoxPath.Text = folderBrowserDialog.SelectedPath;
-            ///
+
             buttonStartGrouping.Enabled = true;
             textBoxPath.Enabled = true;
             buttonStratExtracting.Enabled = true;
@@ -42,12 +39,13 @@ namespace ArminTools
             checkBoxFromExtEnabler.Enabled = true;
             maskedTextBoxFromExt.Enabled = true;
             maskedTextBoxToExt.Enabled = true;
-            /// Color Change
+
             textBoxPath.ForeColor = Color.LightSkyBlue;
             buttonSelectPath.BackColor = SystemColors.Window;
-            buttonStartExtChanger.BackColor = Color.CornflowerBlue;
-            buttonStartGrouping.BackColor = Color.Tomato;
-            buttonStratExtracting.BackColor = Color.Yellow;
+            var buttonGreen = Color.MediumSpringGreen;
+            buttonStartExtChanger.BackColor = buttonGreen;
+            buttonStartGrouping.BackColor = buttonGreen;
+            buttonStratExtracting.BackColor = buttonGreen;
         }
 
         private void SetControlTexts()
@@ -70,6 +68,9 @@ namespace ArminTools
             maskedTextBoxFromExt.Enabled = enableOrDisable;
             labelExtTo.Visible = enableOrDisable;
             labelHiddenChange.Visible = !enableOrDisable;
+            maskedTextBoxFromExt.Clear();
+            if(enableOrDisable) labelExtFrom.ForeColor = SystemColors.ControlText;
+            else labelExtFrom.ForeColor = SystemColors.ControlDark;
         }
 
         private void Success(string type, string path)
@@ -90,8 +91,40 @@ namespace ArminTools
             long result = Convert.ToInt64(newNumber);
             return result;
         }
+        
+        private void IsRTL (bool isRTL)
+        {
+        	if(!isRTL)return;
+        	Control[] controls = {checkBoxFromExtEnabler,maskedTextBoxFromExt,maskedTextBoxToExt,labelExtFrom,labelExtTo,labelHiddenChange};
+        	foreach (Control cntrl in controls)
+        	{
+        		cntrl.Left = 200-(cntrl.Left+cntrl.Size.Width);
+        	}
+        }
+        
+        private void SetFont()
+        {
+        	Control[] controls = {labelExtFrom,labelExtTo,labelHiddenChange,buttonStratExtracting,buttonSelectPath,buttonStartGrouping,buttonStartExtChanger,labelCredit};
+        	foreach (Control cntrl in controls)
+        	{
+        		cntrl.Font = appLang.Font;
+        	}
+        }
 
         //Events
+        
+        private void CheckBoxFromExtEnablerCheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox tmp = sender as CheckBox;
+            Enable_DisableFromExt(tmp.Checked);
+        }
+        private void ControlMouseEnterorLeave(object sender, EventArgs e)
+        {
+            var senderControl = sender as Control;
+            var oldBackColor = senderControl.BackColor;
+            senderControl.BackColor = senderControl.ForeColor;
+            senderControl.ForeColor = oldBackColor;
+        }
 
         private void selectPathButtonClick(object sender, EventArgs e)
         {
@@ -112,7 +145,8 @@ namespace ArminTools
             {
                 long groupSize = RemoveThousandSeparator(groupSizeNumericUpDown.Text);
                 var groupedFiles = new FileGrouper(path, groupSize).GetGroups(false);
-                FolderUtility.CreateSeriesOfFolders(path, groupedFiles.Count(), false, out var directories);
+                DirectoryInfo[] directories;
+                FolderUtility.CreateSeriesOfFolders(path, groupedFiles.Count(), false, out directories);
                 FileUtility.MoveFiles(directories, groupedFiles);
                 FolderUtility.AddSizeToFoldersName(directories, ESizeUnit.MegaByte, 2);
                 Success(appLang.GroupingSuccess, path);
@@ -177,34 +211,6 @@ namespace ArminTools
 
         }
 
-        private void labelCreditMouseEnter(object sender, EventArgs e)
-        {
-            labelCredit.ForeColor = System.Drawing.Color.Red;
-        }
 
-        private void labelCreditMouseLeave(object sender, EventArgs e)
-        {
-            labelCredit.ForeColor = System.Drawing.SystemColors.ControlText;
-        }
-
-        private void CheckBoxFromExtEnablerCheckedChanged(object sender, EventArgs e)
-        {
-            CheckBox tmp = sender as CheckBox;
-            Enable_DisableFromExt(tmp.Checked);
-        }
-        private void ControlMouseEnter(object sender, EventArgs e)
-        {
-            var senderControl = sender as Control;
-            var oldBackColor = senderControl.BackColor;
-            senderControl.BackColor = senderControl.ForeColor;
-            senderControl.ForeColor = oldBackColor;
-        }
-        private void ControlMouseLeave(object sender, EventArgs e)
-        {
-            var senderControl = sender as Control;
-            var oldForeColor = senderControl.ForeColor;
-            senderControl.ForeColor = senderControl.BackColor;
-            senderControl.BackColor = oldForeColor;
-        }
     }
 }
