@@ -5,6 +5,7 @@
  */
 using System;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
@@ -31,8 +32,8 @@ namespace ArminTools
 
         private void EnableControls()
         {
-            textBoxPath.Text = folderBrowserDialog1.SelectedPath;
-            textBoxPath.ForeColor = System.Drawing.Color.LightSkyBlue;
+            textBoxPath.Text = folderBrowserDialog.SelectedPath;
+            ///
             buttonStartGrouping.Enabled = true;
             textBoxPath.Enabled = true;
             buttonStratExtracting.Enabled = true;
@@ -41,12 +42,18 @@ namespace ArminTools
             checkBoxFromExtEnabler.Enabled = true;
             maskedTextBoxFromExt.Enabled = true;
             maskedTextBoxToExt.Enabled = true;
+            /// Color Change
+            textBoxPath.ForeColor = Color.LightSkyBlue;
+            buttonSelectPath.BackColor = SystemColors.Window;
+            buttonStartExtChanger.BackColor = Color.CornflowerBlue;
+            buttonStartGrouping.BackColor = Color.Tomato;
+            buttonStratExtracting.BackColor = Color.Yellow;
         }
 
         private void SetControlTexts()
         {
             Text = appLang.FormName;
-            selectPathButton.Text = appLang.SelectPath;
+            buttonSelectPath.Text = appLang.SelectPath;
             labelUnitSize.Text = appLang.SizeUnit;
             labelCredit.Text = appLang.Creator;
             buttonStartGrouping.Text = appLang.StartGrouping;
@@ -61,9 +68,8 @@ namespace ArminTools
         private void Enable_DisableFromExt(bool enableOrDisable)
         {
             maskedTextBoxFromExt.Enabled = enableOrDisable;
-            maskedTextBoxFromExt.Visible = enableOrDisable;
-            labelExtFrom.Visible = enableOrDisable;
             labelExtTo.Visible = enableOrDisable;
+            labelHiddenChange.Visible = !enableOrDisable;
         }
 
         private void Success(string type, string path)
@@ -78,7 +84,7 @@ namespace ArminTools
             return dialogResult == DialogResult.Yes;
         }
 
-        private long RemoveThousendSeprator(string number)
+        private long RemoveThousandSeparator(string number)
         {
             string newNumber = number.Replace(",", "");
             long result = Convert.ToInt64(newNumber);
@@ -89,9 +95,9 @@ namespace ArminTools
 
         private void selectPathButtonClick(object sender, EventArgs e)
         {
-            folderBrowserDialog1.ShowDialog();
-            var selectedPath = folderBrowserDialog1.SelectedPath;
-            if (!String.IsNullOrWhiteSpace(selectedPath))
+            folderBrowserDialog.ShowDialog();
+            var selectedPath = folderBrowserDialog.SelectedPath;
+            if (!string.IsNullOrWhiteSpace(selectedPath))
             {
                 EnableControls();
             }
@@ -100,14 +106,13 @@ namespace ArminTools
 
         private void buttonStartGroupingClick(object sender, EventArgs e)
         {
-            var path = folderBrowserDialog1.SelectedPath;
+            var path = folderBrowserDialog.SelectedPath;
             if (!Conformation(path, appLang.OperationGrouping)) return;
             try
             {
-                long groupSize = RemoveThousendSeprator(groupSizeNumericUpDown.Text);
+                long groupSize = RemoveThousandSeparator(groupSizeNumericUpDown.Text);
                 var groupedFiles = new FileGrouper(path, groupSize).GetGroups(false);
-                DirectoryInfo[] directories;
-                FolderUtility.CreateSeriesOfFolders(path, groupedFiles.Count(), false, out directories);
+                FolderUtility.CreateSeriesOfFolders(path, groupedFiles.Count(), false, out var directories);
                 FileUtility.MoveFiles(directories, groupedFiles);
                 FolderUtility.AddSizeToFoldersName(directories, ESizeUnit.MegaByte, 2);
                 Success(appLang.GroupingSuccess, path);
@@ -120,7 +125,7 @@ namespace ArminTools
 
         private void buttonStratExtractingClick(object sender, EventArgs e)
         {
-            var path = folderBrowserDialog1.SelectedPath;
+            var path = folderBrowserDialog.SelectedPath;
             if (!Conformation(path, appLang.OperationExtraction)) return;
             try
             {
@@ -137,7 +142,7 @@ namespace ArminTools
 
         private void buttonStartExtChangerClick(object sender, EventArgs e)
         {
-            var path = folderBrowserDialog1.SelectedPath;
+            var path = folderBrowserDialog.SelectedPath;
             if (!Conformation(path, appLang.OperationExtChange)) return;
             try
             {
@@ -186,6 +191,20 @@ namespace ArminTools
         {
             CheckBox tmp = sender as CheckBox;
             Enable_DisableFromExt(tmp.Checked);
+        }
+        private void ControlMouseEnter(object sender, EventArgs e)
+        {
+            var senderControl = sender as Control;
+            var oldBackColor = senderControl.BackColor;
+            senderControl.BackColor = senderControl.ForeColor;
+            senderControl.ForeColor = oldBackColor;
+        }
+        private void ControlMouseLeave(object sender, EventArgs e)
+        {
+            var senderControl = sender as Control;
+            var oldForeColor = senderControl.ForeColor;
+            senderControl.ForeColor = senderControl.BackColor;
+            senderControl.BackColor = oldForeColor;
         }
     }
 }
