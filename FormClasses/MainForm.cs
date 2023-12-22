@@ -1,11 +1,15 @@
-﻿using System;
+﻿using ArminTools.CoreClasses;
+using ArminTools.SubClasses.Languages;
+using ArminTools.SubClasses.SizeUnit;
+using ArminTools.UtilityClasses;
+using System;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace ArminTools
+namespace ArminTools.FormClasses
 {
 
     /// <summary>
@@ -15,14 +19,14 @@ namespace ArminTools
     public partial class MainForm : Form
     {
 
-        private ILanguage appLang = Program.ApplicationLanguage;
+        private readonly ILanguage _appLang = Program.ApplicationLanguage;
 
         public MainForm()
         {
             InitializeComponent();
             SetControlTexts();
             SetFont();
-            IsRTL(appLang.RTL);
+            IsRtl(_appLang.RTL);
         }
 
         //Methods
@@ -50,17 +54,18 @@ namespace ArminTools
 
         private void SetControlTexts()
         {
-            Text = appLang.FormName;
-            buttonSelectPath.Text = appLang.SelectPath;
-            labelUnitSize.Text = appLang.SizeUnit;
-            labelCredit.Text = appLang.Creator;
-            buttonStartGrouping.Text = appLang.StartGrouping;
-            buttonStratExtracting.Text = appLang.StartExtracting;
-            buttonStartExtChanger.Text = appLang.StartExtChanging;
-            labelExtFrom.Text = appLang.ExtFrom;
-            labelExtTo.Text = appLang.ExtTo;
-            textBoxPath.Text = appLang.PathPlaceholder;
-            labelHiddenChange.Text = appLang.ExtHiddenChange;
+            Text = _appLang.FormName;
+            buttonSelectPath.Text = _appLang.SelectPath;
+            labelUnitSize.Text = _appLang.SizeUnit;
+            labelCredit.Text = _appLang.Creator;
+            buttonStartGrouping.Text = _appLang.StartGrouping;
+            buttonStratExtracting.Text = _appLang.StartExtracting;
+            buttonStartExtChanger.Text = _appLang.StartExtChanging;
+            labelExtFrom.Text = _appLang.ExtFrom;
+            labelExtTo.Text = _appLang.ExtTo;
+            textBoxPath.Text = _appLang.PathPlaceholder;
+            labelHiddenChange.Text = _appLang.ExtHiddenChange;
+            folderBrowserDialog.Description = _appLang.SelectPath;
         }
 
         private void Enable_DisableFromExt(bool enableOrDisable)
@@ -75,13 +80,13 @@ namespace ArminTools
 
         private void Success(string type, string path)
         {
-            MessageBox.Show(type);
+            MessageBox.Show(type, _appLang.Success, MessageBoxButtons.OK, MessageBoxIcon.Information);
             Process.Start(path);
         }
 
         private bool Conformation(string path, string operation)
         {
-            var dialogResult = MessageBox.Show(string.Format("{0}{1}{2}\n\n{3}", appLang.ConfirmFirstpart, operation, appLang.ConfirmSecondpart, path), operation, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            var dialogResult = MessageBox.Show(string.Format("{0}{1}{2}\n\n{3}", _appLang.ConfirmFirstpart, operation, _appLang.ConfirmSecondpart, path), operation, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             return dialogResult == DialogResult.Yes;
         }
 
@@ -92,9 +97,9 @@ namespace ArminTools
             return result;
         }
 
-        private void IsRTL(bool isRTL)
+        private void IsRtl(bool isRtl)
         {
-            if (!isRTL) return;
+            if (!isRtl) return;
             Control[] controls =
             {
                 checkBoxFromExtEnabler,
@@ -125,7 +130,7 @@ namespace ArminTools
             };
             foreach (Control cntrl in controls)
             {
-                cntrl.Font = appLang.Font;
+                cntrl.Font = _appLang.Font;
                 AdjustControlFontSize(cntrl);
             }
         }
@@ -147,17 +152,20 @@ namespace ArminTools
         private void CheckBoxFromExtEnablerCheckedChanged(object sender, EventArgs e)
         {
             CheckBox tmp = sender as CheckBox;
-            Enable_DisableFromExt(tmp.Checked);
+            Enable_DisableFromExt(tmp != null && tmp.Checked);
         }
         private void ControlMouseEnterorLeave(object sender, EventArgs e)
         {
             var senderControl = sender as Control;
-            var oldBackColor = senderControl.BackColor;
-            senderControl.BackColor = senderControl.ForeColor;
-            senderControl.ForeColor = oldBackColor;
+            if (senderControl != null)
+            {
+                var oldBackColor = senderControl.BackColor;
+                senderControl.BackColor = senderControl.ForeColor;
+                senderControl.ForeColor = oldBackColor;
+            }
         }
 
-        private void selectPathButtonClick(object sender, EventArgs e)
+        private void SelectPathButtonClick(object sender, EventArgs e)
         {
             folderBrowserDialog.ShowDialog();
             var selectedPath = folderBrowserDialog.SelectedPath;
@@ -168,10 +176,10 @@ namespace ArminTools
         }
 
 
-        private void buttonStartGroupingClick(object sender, EventArgs e)
+        private void ButtonStartGroupingClick(object sender, EventArgs e)
         {
             var path = folderBrowserDialog.SelectedPath;
-            if (!Conformation(path, appLang.OperationGrouping)) return;
+            if (!Conformation(path, _appLang.OperationGrouping)) return;
             try
             {
                 long groupSize = RemoveThousandSeparator(groupSizeNumericUpDown.Text);
@@ -180,35 +188,35 @@ namespace ArminTools
                 FolderUtility.CreateSeriesOfFolders(path, groupedFiles.Count(), false, out directories);
                 FileUtility.MoveFiles(directories, groupedFiles);
                 FolderUtility.AddSizeToFoldersName(directories, ESizeUnit.MegaByte, 2);
-                Success(appLang.GroupingSuccess, path);
+                Success(_appLang.GroupingSuccess, path);
             }
             catch (Exception exc)
             {
-                MessageBox.Show(appLang.Error + exc.Message);
+                MessageBox.Show(_appLang.Error + exc.Message);
             }
         }
 
-        private void buttonStratExtractingClick(object sender, EventArgs e)
+        private void ButtonStratExtractingClick(object sender, EventArgs e)
         {
             var path = folderBrowserDialog.SelectedPath;
-            if (!Conformation(path, appLang.OperationExtraction)) return;
+            if (!Conformation(path, _appLang.OperationExtraction)) return;
             try
             {
                 var dirs = FolderUtility.GetSubDirectories(path);
                 FileUtility.MoveFiles(path, dirs);
                 FolderUtility.DeleteFolders(dirs);
-                Success(appLang.ExtractSuccess, path);
+                Success(_appLang.ExtractSuccess, path);
             }
             catch (Exception exc)
             {
-                MessageBox.Show(appLang.Error + exc.Message);
+                MessageBox.Show(_appLang.Error + exc.Message);
             }
         }
 
-        private void buttonStartExtChangerClick(object sender, EventArgs e)
+        private void ButtonStartExtChangerClick(object sender, EventArgs e)
         {
             var path = folderBrowserDialog.SelectedPath;
-            if (!Conformation(path, appLang.OperationExtChange)) return;
+            if (!Conformation(path, _appLang.OperationExtChange)) return;
             try
             {
                 var toExt = maskedTextBoxToExt.Text;
@@ -216,17 +224,17 @@ namespace ArminTools
                 if (checkBoxFromExtEnabler.Checked) fromExt = string.Format("*{0}", maskedTextBoxFromExt.Text);
                 FileInfo[] files = FolderUtility.GetFilesFromFolder(path, true, fromExt);
                 FileUtility.ChangeFilesExtension(files, toExt);
-                Success(appLang.ExtchangeSuccess, path);
+                Success(_appLang.ExtchangeSuccess, path);
             }
             catch (Exception exc)
             {
-                MessageBox.Show(appLang.Error + exc.Message);
+                MessageBox.Show(_appLang.Error + exc.Message);
             }
         }
 
-        private void labelCreditClick(object sender, EventArgs e)
+        private void LabelCreditClick(object sender, EventArgs e)
         {
-            MessageBox.Show(appLang.ContactInfo, appLang.Creator, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(_appLang.ContactInfo, _appLang.Creator, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void TextBoxPathClick(object sender, EventArgs e)
@@ -237,7 +245,7 @@ namespace ArminTools
             }
             catch (Exception exc)
             {
-                MessageBox.Show(appLang.Error + exc.Message);
+                MessageBox.Show(_appLang.Error + exc.Message);
             }
 
         }

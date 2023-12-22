@@ -1,84 +1,86 @@
 ﻿using System.Drawing;
 
-namespace ArminTools
+namespace ArminTools.SubClasses.Languages
 {
     /// <summary>
     ///     Description of English.
     /// </summary>
     public class English : ILanguage
     {
-        private const string name = "English";
-        private const bool rTL = false;
-        private readonly Font font = new Font("Candara", 12F, FontStyle.Bold);
+        private const string ConstName = "English";
+        private const bool ConstRtl = false;
+        private readonly Font _font = new Font("Candara", 12F, FontStyle.Bold);
 
         //Form
-        private const string formName = "Armin Tools";
-        private const string pathPlaceholder = "Please Select the Path to Files/Folders";
-        private const string selectPath = "Select Target Path";
-        private const string sizeUnit = "Mb";
-        private const string startGrouping = "▶Group Files";
-        private const string startExtracting = "▶Extract Files";
-        private const string extFrom = "From :";
-        private const string extTo = "To :";
-        private const string extHiddenChange = "Change To :";
-        private const string startExtChanging = "▶Change Files Extension";
-        private const string creator = "Armin Talakoub - 2023";
+        private const string ConstFormName = "Armin Tools";
+        private const string ConstPathPlaceholder = "Please Select the Path to Files/Folders";
+        private const string ConstSelectPath = "Select Target Path";
+        private const string ConstSizeUnit = "Mb";
+        private const string ConstStartGrouping = "▶Group Files";
+        private const string ConstStartExtracting = "▶Extract Files";
+        private const string ConstExtFrom = "From :";
+        private const string ConstExtTo = "To :";
+        private const string ConstExtHiddenChange = "Change To :";
+        private const string ConstStartExtChanging = "▶Change Files Extension";
+        private const string ConstCreator = "Armin Talakoub - 2023";
 
         //Errors
-        private const string error = "Error \n";
-        private const string errorEmptyPath = "Path can not be Empty";
-        private const string errorGroupSize = "Group Size can not be Smaller than 1 Mb";
-        private const string errorFileFolderMismatch = "Mismatch in Files and Folders count!";
-        private const string errorFileFolderNull = "Folders/Files Collections can not be null";
-        private const string errorNoFolders = "Number of Folders can not be less than 1";
+        private const string ConstError = "Error \n";
+        private const string ConstErrorEmptyPath = "Path can not be Empty";
+        private const string ConstErrorGroupSize = "Group Size can not be Smaller than 1 Mb";
+        private const string ConstErrorFileFolderMismatch = "Mismatch in Files and Folders count!";
+        private const string ConstErrorFileFolderNull = "Folders/Files Collections can not be null";
+        private const string ConstErrorNoFolders = "Number of Folders can not be less than 1";
 
         //MessageBoxes
-        private const string contactInfo = "Email : ArminTalakoub@gmail.com \n\nTelegram Id : @SHARK_US";
-        private const string groupingSuccess = "Files were Grouped Successfully";
-        private const string extractSuccess = "Files were Extracted Successfully";
-        private const string extchangeSuccess = "Files Extensions were Changed Successfully";
-        private const string confirmFirstpart = "Are you sure you want to Run the Operation [";
-        private const string confirmSecondpart = "] on the Following Path?";
-        private const string operationGrouping = "File Grouping";
-        private const string operationExtraction = "File Extraction";
-        private const string operationExtChange = "File Extension Change";
+        private const string ConstContactInfo = "Email : ArminTalakoub@gmail.com \n\nTelegram Id : @SHARK_US";
+        private const string ConstSuccess = "Success!";
+        private const string ConstGroupingSuccess = "Files were Grouped Successfully";
+        private const string ConstExtractSuccess = "Files were Extracted Successfully";
+        private const string ConstExtChangeSuccess = "Files Extensions were Changed Successfully";
+        private const string ConstConfirmFirstPart = "Are you sure you want to Run the Operation [";
+        private const string ConstConfirmSecondPart = "] on the Following Path?";
+        private const string ConstOperationGrouping = "File Grouping";
+        private const string ConstOperationExtraction = "File Extraction";
+        private const string ConstOperationExtChange = "File Extension Change";
 
 
-        public string Name { get { return name; } }
-        public bool RTL { get { return rTL; } }
-        public Font Font { get { return font; } }
+        public string Name { get { return ConstName; } }
+        public bool RTL { get { return ConstRtl; } }
+        public Font Font { get { return _font; } }
 
         //Form
-        public string FormName { get { return formName; } }
-        public string PathPlaceholder { get { return pathPlaceholder; } }
-        public string SelectPath { get { return selectPath; } }
-        public string SizeUnit { get { return sizeUnit; } }
-        public string StartGrouping { get { return startGrouping; } }
-        public string StartExtracting { get { return startExtracting; } }
-        public string ExtFrom { get { return extFrom; } }
-        public string ExtTo { get { return extTo; } }
-        public string ExtHiddenChange { get { return extHiddenChange; } }
-        public string StartExtChanging { get { return startExtChanging; } }
-        public string Creator { get { return creator; } }
+        public string FormName { get { return ConstFormName; } }
+        public string PathPlaceholder { get { return ConstPathPlaceholder; } }
+        public string SelectPath { get { return ConstSelectPath; } }
+        public string SizeUnit { get { return ConstSizeUnit; } }
+        public string StartGrouping { get { return ConstStartGrouping; } }
+        public string StartExtracting { get { return ConstStartExtracting; } }
+        public string ExtFrom { get { return ConstExtFrom; } }
+        public string ExtTo { get { return ConstExtTo; } }
+        public string ExtHiddenChange { get { return ConstExtHiddenChange; } }
+        public string StartExtChanging { get { return ConstStartExtChanging; } }
+        public string Creator { get { return ConstCreator; } }
 
         //Errors
-        public string Error { get { return error; } }
-        public string ErrorEmptyPath { get { return errorEmptyPath; } }
-        public string ErrorGroupSize { get { return errorGroupSize; } }
-        public string ErrorFileFolderMismatch { get { return errorFileFolderMismatch; } }
-        public string ErrorFileFolderNull { get { return errorFileFolderNull; } }
-        public string ErrorNoFolders { get { return errorNoFolders; } }
+        public string Error { get { return ConstError; } }
+        public string ErrorEmptyPath { get { return ConstErrorEmptyPath; } }
+        public string ErrorGroupSize { get { return ConstErrorGroupSize; } }
+        public string ErrorFileFolderMismatch { get { return ConstErrorFileFolderMismatch; } }
+        public string ErrorFileFolderNull { get { return ConstErrorFileFolderNull; } }
+        public string ErrorNoFolders { get { return ConstErrorNoFolders; } }
 
         //MessageBoxes
-        public string ContactInfo { get { return contactInfo; } }
-        public string GroupingSuccess { get { return groupingSuccess; } }
-        public string ExtractSuccess { get { return extractSuccess; } }
-        public string ExtchangeSuccess { get { return extchangeSuccess; } }
-        public string ConfirmFirstpart { get { return confirmFirstpart; } }
-        public string ConfirmSecondpart { get { return confirmSecondpart; } }
-        public string OperationGrouping { get { return operationGrouping; } }
-        public string OperationExtraction { get { return operationExtraction; } }
-        public string OperationExtChange { get { return operationExtChange; } }
+        public string ContactInfo { get { return ConstContactInfo; } }
+        public string Success { get { return ConstSuccess; } }
+        public string GroupingSuccess { get { return ConstGroupingSuccess; } }
+        public string ExtractSuccess { get { return ConstExtractSuccess; } }
+        public string ExtchangeSuccess { get { return ConstExtChangeSuccess; } }
+        public string ConfirmFirstpart { get { return ConstConfirmFirstPart; } }
+        public string ConfirmSecondpart { get { return ConstConfirmSecondPart; } }
+        public string OperationGrouping { get { return ConstOperationGrouping; } }
+        public string OperationExtraction { get { return ConstOperationExtraction; } }
+        public string OperationExtChange { get { return ConstOperationExtChange; } }
 
     }
 }

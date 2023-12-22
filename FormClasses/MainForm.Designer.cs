@@ -3,8 +3,10 @@
  * Date: 11/21/2023
  * Time: 08:39 ب.ظ
  */
+
 using System.Windows.Forms;
-namespace ArminTools
+
+namespace ArminTools.FormClasses
 {
 	partial class MainForm
 	{
@@ -90,7 +92,7 @@ namespace ArminTools
             this.buttonSelectPath.TabIndex = 0;
             this.buttonSelectPath.Text = "#PLACEHOLDER#";
             this.buttonSelectPath.UseVisualStyleBackColor = false;
-            this.buttonSelectPath.Click += new System.EventHandler(this.selectPathButtonClick);
+            this.buttonSelectPath.Click += new System.EventHandler(this.SelectPathButtonClick);
             this.buttonSelectPath.MouseEnter += new System.EventHandler(this.ControlMouseEnterorLeave);
             this.buttonSelectPath.MouseLeave += new System.EventHandler(this.ControlMouseEnterorLeave);
             // 
@@ -116,7 +118,7 @@ namespace ArminTools
             this.labelCredit.TabIndex = 3;
             this.labelCredit.Text = "#PLACEHOLDER#";
             this.labelCredit.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.labelCredit.Click += new System.EventHandler(this.labelCreditClick);
+            this.labelCredit.Click += new System.EventHandler(this.LabelCreditClick);
             this.labelCredit.MouseEnter += new System.EventHandler(this.ControlMouseEnterorLeave);
             this.labelCredit.MouseLeave += new System.EventHandler(this.ControlMouseEnterorLeave);
             // 
@@ -136,7 +138,7 @@ namespace ArminTools
             this.buttonStartGrouping.TabIndex = 2;
             this.buttonStartGrouping.Text = "#PLACEHOLDER#";
             this.buttonStartGrouping.UseVisualStyleBackColor = true;
-            this.buttonStartGrouping.Click += new System.EventHandler(this.buttonStartGroupingClick);
+            this.buttonStartGrouping.Click += new System.EventHandler(this.ButtonStartGroupingClick);
             this.buttonStartGrouping.MouseEnter += new System.EventHandler(this.ControlMouseEnterorLeave);
             this.buttonStartGrouping.MouseLeave += new System.EventHandler(this.ControlMouseEnterorLeave);
             // 
@@ -151,7 +153,7 @@ namespace ArminTools
             this.buttonStratExtracting.TabIndex = 3;
             this.buttonStratExtracting.Text = "#PLACEHOLDER#";
             this.buttonStratExtracting.UseVisualStyleBackColor = true;
-            this.buttonStratExtracting.Click += new System.EventHandler(this.buttonStratExtractingClick);
+            this.buttonStratExtracting.Click += new System.EventHandler(this.ButtonStratExtractingClick);
             this.buttonStratExtracting.MouseEnter += new System.EventHandler(this.ControlMouseEnterorLeave);
             this.buttonStratExtracting.MouseLeave += new System.EventHandler(this.ControlMouseEnterorLeave);
             // 
@@ -193,7 +195,7 @@ namespace ArminTools
             this.buttonStartExtChanger.TabIndex = 7;
             this.buttonStartExtChanger.Text = "#PLACEHOLDER#";
             this.buttonStartExtChanger.UseVisualStyleBackColor = true;
-            this.buttonStartExtChanger.Click += new System.EventHandler(this.buttonStartExtChangerClick);
+            this.buttonStartExtChanger.Click += new System.EventHandler(this.ButtonStartExtChangerClick);
             this.buttonStartExtChanger.MouseEnter += new System.EventHandler(this.ControlMouseEnterorLeave);
             this.buttonStartExtChanger.MouseLeave += new System.EventHandler(this.ControlMouseEnterorLeave);
             // 
@@ -370,12 +372,14 @@ namespace ArminTools
             this.Controls.Add(this.buttonSelectPath);
             this.Controls.Add(this.labelHiddenChange);
             this.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.Name = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "#PLACEHOLDER#";
             ((System.ComponentModel.ISupportInitialize)(this.groupSizeNumericUpDown)).EndInit();
             this.ResumeLayout(false);

@@ -1,27 +1,20 @@
-﻿/*
- * User: Armin
- * Date: 12/12/2023
- * Time: 06:06 ب.ظ
- */
-using System;
-
-namespace ArminTools
+﻿namespace ArminTools.SubClasses.SizeUnit
 {
-	/// <summary>
-	/// Description of KiloByte.
-	/// </summary>
-	public class KiloByte : SizeUnit
-	{
-		const double uniqueFactor = 1024;
-		const ESizeUnit unittype = ESizeUnit.KiloByte;
-		const string abbreviation = "Kb";
-		
-		public override string Abbreviation
-		{	
-			get {return abbreviation;}
-		}
-		
-		public KiloByte(double sizeInByte) : base(sizeInByte,uniqueFactor,unittype,abbreviation) {}
-		
-	}
+    /// <summary>
+    /// Description of KiloByte.
+    /// </summary>
+    public class KiloByte : SizeUnit
+    {
+        const double UniqueFactor = 1024;
+        const ESizeUnit Unittype = ESizeUnit.KiloByte;
+        const string KbAbbreviation = "Kb";
+
+        public override string Abbreviation
+        {
+            get { return KbAbbreviation; }
+        }
+
+        public KiloByte(double sizeInByte) : base(sizeInByte, UniqueFactor, Unittype, KbAbbreviation) { }
+
+    }
 }

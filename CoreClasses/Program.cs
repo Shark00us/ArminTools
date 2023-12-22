@@ -1,32 +1,45 @@
-﻿/*
- * User: Armin
- * Date: 11/21/2023
- * Time: 08:39 ب.ظ
- */
+﻿using ArminTools.FormClasses;
+using ArminTools.SubClasses.Languages;
 using System;
 using System.Windows.Forms;
 
-namespace ArminTools
+namespace ArminTools.CoreClasses
 {
     /// <summary>
     /// Class with program entry point.
     /// </summary>
     internal static class Program
     {
-        private static readonly ILanguage AppLang;
-        public static ILanguage ApplicationLanguage { get { return AppLang; } }
+        public static ILanguage ApplicationLanguage { get; }
 
 
         [STAThread]
         private static void Main(string[] args)
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+            if (ApplicationLanguage != null)
+            {
+                Application.Run(new MainForm());
+            }
+
         }
         static Program()
         {
-            AppLang = new Persian();
+            ILanguage[] languages =
+            {
+                new English(),
+                new Persian()
+            };
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+
+            using (SelectConfigForm myForm = new SelectConfigForm(languages))
+            {
+                if (myForm.ShowDialog() == DialogResult.OK)
+                {
+                    ApplicationLanguage = myForm.SelectedLanguage;
+                }
+            }
+
         }
 
     }

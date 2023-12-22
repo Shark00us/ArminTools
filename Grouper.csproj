@@ -77,6 +77,12 @@
     <Compile Include="FormClasses\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormClasses\SelectConfigForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormClasses\SelectConfigForm.Designer.cs">
+      <DependentUpon>SelectConfigForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SubClasses\Languages\English.cs" />
     <Compile Include="SubClasses\Languages\ILanguage.cs" />
@@ -97,6 +103,9 @@
   <ItemGroup>
     <EmbeddedResource Include="FormClasses\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormClasses\SelectConfigForm.resx">
+      <DependentUpon>SelectConfigForm.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
