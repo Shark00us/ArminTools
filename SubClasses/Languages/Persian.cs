@@ -1,17 +1,16 @@
-﻿using System;
-using System.Drawing;
+﻿using System.Drawing;
 
 namespace ArminTools
 {
-	/// <summary>
-	/// Description of Persian.
-	/// </summary>
-	public class Persian : ILanguage
-	{
-		
+    /// <summary>
+    /// Description of Persian.
+    /// </summary>
+    public class Persian : ILanguage
+    {
+
         private const string name = "فارسی";
         private const bool rTL = true;
-        private readonly Font font = new Font("Adobe Arabic", 11.75F, FontStyle.Bold, GraphicsUnit.Point, 178);
+        private readonly Font font = new Font("Sakkal Majalla", 12F, FontStyle.Bold);
 
         //Form
         private const string formName = "ابزار های آرمین";
@@ -20,9 +19,9 @@ namespace ArminTools
         private const string sizeUnit = "Mb";
         private const string startGrouping = "▶ گروهبندی فایلها";
         private const string startExtracting = "▶ استخراج فایلها";
-        private const string extFrom = ":از";
-        private const string extTo = ":به";
-        private const string extHiddenChange = "تغییر به";
+        private const string extFrom = ": از";
+        private const string extTo = ": به";
+        private const string extHiddenChange = ": تغییر به";
         private const string startExtChanging = "▶ تغییر پسوند فایلها";
         private const string creator = "آرمین طلاکوب - 1402";
 
@@ -46,41 +45,41 @@ namespace ArminTools
         private const string operationExtChange = "تغییر پسوند فایلها";
 
 
-        public string Name { get {return name;}}
-        public bool RTL { get {return rTL;}}
-        public Font Font { get {return font;}}
+        public string Name { get { return name; } }
+        public bool RTL { get { return rTL; } }
+        public Font Font { get { return font; } }
 
         //Form
-        public string FormName{ get {return formName;} }
-        public string PathPlaceholder{ get {return pathPlaceholder;} }
-        public string SelectPath{ get {return selectPath;} }
-        public string SizeUnit{ get {return sizeUnit;} }
-        public string StartGrouping{ get {return startGrouping;} }
-        public string StartExtracting{ get {return startExtracting;} }
-        public string ExtFrom{ get {return extFrom;} }
-        public string ExtTo{ get {return extTo;} }
-        public string ExtHiddenChange{ get {return extHiddenChange;} }
-        public string StartExtChanging{ get {return startExtChanging;} }
-        public string Creator{ get {return creator;} }
+        public string FormName { get { return formName; } }
+        public string PathPlaceholder { get { return pathPlaceholder; } }
+        public string SelectPath { get { return selectPath; } }
+        public string SizeUnit { get { return sizeUnit; } }
+        public string StartGrouping { get { return startGrouping; } }
+        public string StartExtracting { get { return startExtracting; } }
+        public string ExtFrom { get { return extFrom; } }
+        public string ExtTo { get { return extTo; } }
+        public string ExtHiddenChange { get { return extHiddenChange; } }
+        public string StartExtChanging { get { return startExtChanging; } }
+        public string Creator { get { return creator; } }
 
         //Errors
-        public string Error{ get {return error;} }
-        public string ErrorEmptyPath{ get {return errorEmptyPath;} }
-        public string ErrorGroupSize{ get {return errorGroupSize;} }
-        public string ErrorFileFolderMismatch{ get {return errorFileFolderMismatch;} }
-        public string ErrorFileFolderNull{ get {return errorFileFolderNull;} }
-        public string ErrorNoFolders{ get {return errorNoFolders;} }
+        public string Error { get { return error; } }
+        public string ErrorEmptyPath { get { return errorEmptyPath; } }
+        public string ErrorGroupSize { get { return errorGroupSize; } }
+        public string ErrorFileFolderMismatch { get { return errorFileFolderMismatch; } }
+        public string ErrorFileFolderNull { get { return errorFileFolderNull; } }
+        public string ErrorNoFolders { get { return errorNoFolders; } }
 
         //MessageBoxes
-        public string ContactInfo{ get {return contactInfo;} }
-        public string GroupingSuccess{ get {return groupingSuccess;} }
-        public string ExtractSuccess{ get {return extractSuccess;} }
-        public string ExtchangeSuccess{ get {return extchangeSuccess;} }
-        public string ConfirmFirstpart{ get {return confirmFirstpart;} }
-        public string ConfirmSecondpart{ get {return confirmSecondpart;} }
-        public string OperationGrouping{ get {return operationGrouping;} }
-        public string OperationExtraction{ get {return operationExtraction;} }
-        public string OperationExtChange{ get {return operationExtChange;} }
-		
-	}
+        public string ContactInfo { get { return contactInfo; } }
+        public string GroupingSuccess { get { return groupingSuccess; } }
+        public string ExtractSuccess { get { return extractSuccess; } }
+        public string ExtchangeSuccess { get { return extchangeSuccess; } }
+        public string ConfirmFirstpart { get { return confirmFirstpart; } }
+        public string ConfirmSecondpart { get { return confirmSecondpart; } }
+        public string OperationGrouping { get { return operationGrouping; } }
+        public string OperationExtraction { get { return operationExtraction; } }
+        public string OperationExtChange { get { return operationExtChange; } }
+
+    }
 }

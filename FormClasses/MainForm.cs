@@ -69,7 +69,7 @@ namespace ArminTools
             labelExtTo.Visible = enableOrDisable;
             labelHiddenChange.Visible = !enableOrDisable;
             maskedTextBoxFromExt.Clear();
-            if(enableOrDisable) labelExtFrom.ForeColor = SystemColors.ControlText;
+            if (enableOrDisable) labelExtFrom.ForeColor = SystemColors.ControlText;
             else labelExtFrom.ForeColor = SystemColors.ControlDark;
         }
 
@@ -91,28 +91,59 @@ namespace ArminTools
             long result = Convert.ToInt64(newNumber);
             return result;
         }
-        
-        private void IsRTL (bool isRTL)
+
+        private void IsRTL(bool isRTL)
         {
-        	if(!isRTL)return;
-        	Control[] controls = {checkBoxFromExtEnabler,maskedTextBoxFromExt,maskedTextBoxToExt,labelExtFrom,labelExtTo,labelHiddenChange};
-        	foreach (Control cntrl in controls)
-        	{
-        		cntrl.Left = 200-(cntrl.Left+cntrl.Size.Width);
-        	}
-        }
-        
-        private void SetFont()
-        {
-        	Control[] controls = {labelExtFrom,labelExtTo,labelHiddenChange,buttonStratExtracting,buttonSelectPath,buttonStartGrouping,buttonStartExtChanger,labelCredit};
-        	foreach (Control cntrl in controls)
-        	{
-        		cntrl.Font = appLang.Font;
-        	}
+            if (!isRTL) return;
+            Control[] controls =
+            {
+                checkBoxFromExtEnabler,
+                maskedTextBoxFromExt,
+                maskedTextBoxToExt,
+                labelExtFrom,
+                labelExtTo,
+                labelHiddenChange
+            };
+            foreach (Control cntrl in controls)
+            {
+                cntrl.Left = 200 - (cntrl.Left + cntrl.Size.Width);
+            }
         }
 
+        private void SetFont()
+        {
+            Control[] controls =
+            {
+                labelExtFrom,
+                labelExtTo,
+                labelHiddenChange,
+                buttonStratExtracting,
+                buttonSelectPath,
+                buttonStartGrouping,
+                buttonStartExtChanger,
+                labelCredit
+            };
+            foreach (Control cntrl in controls)
+            {
+                cntrl.Font = appLang.Font;
+                AdjustControlFontSize(cntrl);
+            }
+        }
+
+        private int ControlTextLengthInPx(Control cntrl)
+        {
+            return TextRenderer.MeasureText(cntrl.Text, cntrl.Font).Width;
+        }
+
+        private void AdjustControlFontSize(Control cntrl, int pad = 10, float step = 1.5f)
+        {
+            while (cntrl.Width - pad < ControlTextLengthInPx(cntrl))
+            {
+                cntrl.Font = new Font(cntrl.Font.FontFamily, cntrl.Font.Size - step, cntrl.Font.Style);
+            }
+        }
         //Events
-        
+
         private void CheckBoxFromExtEnablerCheckedChanged(object sender, EventArgs e)
         {
             CheckBox tmp = sender as CheckBox;
@@ -182,7 +213,7 @@ namespace ArminTools
             {
                 var toExt = maskedTextBoxToExt.Text;
                 var fromExt = "*.*";
-                if (checkBoxFromExtEnabler.Checked) fromExt = "*" + maskedTextBoxFromExt.Text;
+                if (checkBoxFromExtEnabler.Checked) fromExt = string.Format("*{0}", maskedTextBoxFromExt.Text);
                 FileInfo[] files = FolderUtility.GetFilesFromFolder(path, true, fromExt);
                 FileUtility.ChangeFilesExtension(files, toExt);
                 Success(appLang.ExtchangeSuccess, path);
