@@ -10,12 +10,12 @@ namespace ArminTools.SubClasses.Languages
 
         private const string ConstName = "فارسی";
         private const bool ConstRtl = true;
-        private readonly Font _font = new Font("Calibri", 11F, FontStyle.Bold);
+        private readonly Font _font = new Font("Courier New", 13F, FontStyle.Bold);
 
         //Form
         private const string ConstFormName = "ابزار های آرمین";
         private const string ConstPathPlaceholder = "لطفا مسیر فایل ها /فولدر ها را انتخاب کنید";
-        private const string ConstSelectPath = "انتخاب مسیر پوشه ها/فایلها";
+        private const string ConstSelectPath = "انتخاب مسیر";
         private const string ConstSizeUnit = "Mb";
         private const string ConstStartGrouping = "▶ گروهبندی فایلها";
         private const string ConstStartExtracting = "▶ استخراج فایلها";
@@ -36,7 +36,7 @@ namespace ArminTools.SubClasses.Languages
         //MessageBoxes
         private const string ConstContactInfo = "ArminTalakoub@gmail.com :ایمیل\n\n @SHARK_US :آی دی تلگرام";
         private const string ConstSuccess = "!موفقیت";
-        private const string ConstGroupingSuccess = "فایلها به موفقیت گروهبندی شدند";
+        private const string ConstGroupingSuccess = "فایلها با موفقیت گروهبندی شدند";
         private const string ConstExtractSuccess = "فایلها با موفقیت استخراج شدند";
         private const string ConstExtChangeSuccess = "پسوند فایلها با موفقیت تغییر یافت";
         private const string ConstConfirmFirstPart = " آیا از انجام عملیات ";

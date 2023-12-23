@@ -7,7 +7,6 @@ namespace ArminTools.FormClasses
     public partial class SelectConfigForm : Form
     {
         private ILanguage[] _languages;
-        private int _selectedLanguageIndex = -1;
         public ILanguage SelectedLanguage { get; private set; }
 
         public SelectConfigForm(ILanguage[] languages)
@@ -41,8 +40,9 @@ namespace ArminTools.FormClasses
 
         private void LangButton_Click(object sender, EventArgs e)
         {
-            if (sender is Button button)
+            if (sender is Button)
             {
+            	var button = sender as Button;
                 var language = _languages[Convert.ToInt32(button.Tag)];
                 DialogResult = DialogResult.OK;
                 SelectedLanguage = language;

@@ -6,11 +6,15 @@ using System.Windows.Forms;
 namespace ArminTools.CoreClasses
 {
     /// <summary>
-    /// Class with program entry point.
+    /// Main Class with program entry point.
     /// </summary>
     internal static class Program
     {
-        public static ILanguage ApplicationLanguage { get; }
+    	private static readonly ILanguage _applicationLanguage;
+    	public static ILanguage ApplicationLanguage 
+    	{ 
+    		get{return _applicationLanguage;} 
+    	}
 
 
         [STAThread]
@@ -36,7 +40,7 @@ namespace ArminTools.CoreClasses
             {
                 if (myForm.ShowDialog() == DialogResult.OK)
                 {
-                    ApplicationLanguage = myForm.SelectedLanguage;
+                    _applicationLanguage = myForm.SelectedLanguage;
                 }
             }
 

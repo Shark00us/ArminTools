@@ -65,7 +65,7 @@ namespace ArminTools.FormClasses
             labelExtTo.Text = _appLang.ExtTo;
             textBoxPath.Text = _appLang.PathPlaceholder;
             labelHiddenChange.Text = _appLang.ExtHiddenChange;
-            folderBrowserDialog.Description = _appLang.SelectPath;
+            folderBrowserDialog.Description = _appLang.PathPlaceholder;
         }
 
         private void Enable_DisableFromExt(bool enableOrDisable)
@@ -151,8 +151,12 @@ namespace ArminTools.FormClasses
 
         private void CheckBoxFromExtEnablerCheckedChanged(object sender, EventArgs e)
         {
-            CheckBox tmp = sender as CheckBox;
-            Enable_DisableFromExt(tmp != null && tmp.Checked);
+            CheckBox checkbox = sender as CheckBox;
+            if (checkbox != null)
+            {
+           		Enable_DisableFromExt(checkbox != null && checkbox.Checked);	
+            }
+
         }
         private void ControlMouseEnterorLeave(object sender, EventArgs e)
         {
