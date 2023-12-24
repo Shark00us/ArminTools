@@ -109,12 +109,14 @@ namespace ArminTools.FormClasses
 			// 
 			// labelCredit
 			// 
+			this.labelCredit.BackColor = System.Drawing.Color.Gold;
 			this.labelCredit.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.labelCredit.Font = new System.Drawing.Font("Candara", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.labelCredit.Location = new System.Drawing.Point(0, 337);
+			this.labelCredit.Font = new System.Drawing.Font("Candara", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.labelCredit.ForeColor = System.Drawing.Color.Blue;
+			this.labelCredit.Location = new System.Drawing.Point(0, 345);
 			this.labelCredit.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
 			this.labelCredit.Name = "labelCredit";
-			this.labelCredit.Size = new System.Drawing.Size(195, 23);
+			this.labelCredit.Size = new System.Drawing.Size(195, 19);
 			this.labelCredit.TabIndex = 3;
 			this.labelCredit.Text = "#PLACEHOLDER#";
 			this.labelCredit.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -178,7 +180,7 @@ namespace ArminTools.FormClasses
 			// labelline3
 			// 
 			this.labelline3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.labelline3.Location = new System.Drawing.Point(0, 330);
+			this.labelline3.Location = new System.Drawing.Point(0, 332);
 			this.labelline3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
 			this.labelline3.Name = "labelline3";
 			this.labelline3.Size = new System.Drawing.Size(197, 2);
