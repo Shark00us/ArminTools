@@ -86,7 +86,13 @@ namespace ArminTools.FormClasses
 
         private bool Conformation(string path, string operation)
         {
-            var dialogResult = MessageBox.Show(string.Format("{0}{1}{2}\n\n{3}", _appLang.ConfirmFirstpart, operation, _appLang.ConfirmSecondpart, path), operation, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            var dialogResult = MessageBox.Show
+                (
+                    $"{_appLang.ConfirmFirstpart}{operation}{_appLang.ConfirmSecondpart}\n\n{path}",
+                    operation,
+                    MessageBoxButtons.YesNo, 
+                    MessageBoxIcon.Warning
+                );
             return dialogResult == DialogResult.Yes;
         }
 
