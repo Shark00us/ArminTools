@@ -31,7 +31,8 @@ namespace ArminTools.CoreClasses
             ILanguage[] languages =
             {
                 new English(),
-                new Persian()
+                new Persian(),
+                new Deutsch()
             };
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

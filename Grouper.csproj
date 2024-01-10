@@ -85,6 +85,7 @@
       <DependentUpon>SelectConfigForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SubClasses\Languages\Deutsch.cs" />
     <Compile Include="SubClasses\Languages\English.cs" />
     <Compile Include="SubClasses\Languages\ILanguage.cs" />
     <Compile Include="SubClasses\Languages\Persian.cs" />
