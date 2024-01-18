@@ -14,17 +14,29 @@ namespace ArminTools.UtilityClasses
     {
         private static readonly ILanguage appLang = Program.ApplicationLanguage;
 
-        public static void CheckPathNullorEmpty(string path)
+        public static void CheckPathNullOrEmpty(string path)
         {
-            if (string.IsNullOrWhiteSpace(path)) throw new NullReferenceException(appLang.ErrorEmptyPath);
+            if (string.IsNullOrWhiteSpace(path)) throw new ArgumentNullException(appLang.ErrorEmptyPath);
         }
-
-        public static void MoveFiles(string path, List<FileInfo> files)
+        private static string ModifyFileNameForDuplicateFiles(string path,FileInfo file,int loopCount)
         {
-            CheckPathNullorEmpty(path);
+            CheckPathNullOrEmpty(Path.GetDirectoryName(file.FullName));
+            return Path.Combine(path,
+                Path.GetFileNameWithoutExtension(file.Name) + $" Copy({loopCount})" + file.Extension);
+        }
+        private static void MoveFiles(string path, List<FileInfo> files)
+        {
+            CheckPathNullOrEmpty(path);
             foreach (var fle in files)
             {
-                fle.MoveTo(path + @"\" + fle.Name);
+                int loopCount = 1;
+                var destinationFilePath = Path.Combine(path,fle.Name);
+                while (File.Exists(destinationFilePath))
+                {
+                    destinationFilePath = ModifyFileNameForDuplicateFiles(path,fle, loopCount);
+                    loopCount++;
+                }
+                fle.MoveTo(destinationFilePath);
             }
         }
 

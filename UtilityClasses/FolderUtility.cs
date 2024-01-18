@@ -24,7 +24,7 @@ namespace ArminTools.UtilityClasses
 
         public static FileInfo[] GetFilesFromFolder(string path, bool orderFilesBySizeDecending = true, string pattern = "*.*")
         {
-            FileUtility.CheckPathNullorEmpty(path);
+            FileUtility.CheckPathNullOrEmpty(path);
             var folder = new DirectoryInfo(path);
             var result = GetFilesFromFolder(folder, orderFilesBySizeDecending, pattern);
             return result;
@@ -33,7 +33,7 @@ namespace ArminTools.UtilityClasses
 
         public static void CreateSeriesOfFolders(string path, int folderCount, bool charInsteadOfNumber, out DirectoryInfo[] createdDirectoires, string preFix = "", string postFix = "")
         {
-            FileUtility.CheckPathNullorEmpty(path);
+            FileUtility.CheckPathNullOrEmpty(path);
             if (folderCount < 1) throw new IndexOutOfRangeException();
 
             char folderName = '1';
@@ -51,20 +51,23 @@ namespace ArminTools.UtilityClasses
                 createdFolders.Add(createdFolder);
                 folderName++;
             }
-
-            createdDirectoires = createdFolders.ToArray(); //out Parameter Assignment
+            //out Parameter Assignment
+            createdDirectoires = createdFolders.ToArray(); 
 
         }
         public static DirectoryInfo[] GetSubDirectories(string path)
         {
-            FileUtility.CheckPathNullorEmpty(path);
+            FileUtility.CheckPathNullOrEmpty(path);
             DirectoryInfo root = new DirectoryInfo(path);
-            string[] subDirectories = Directory.GetDirectories(root.FullName);
-            List<DirectoryInfo> result = new List<DirectoryInfo>();
-            foreach (var dir in subDirectories)
+            return GetSubDirectories(root.GetDirectories());
+        }
+        
+        public static DirectoryInfo[] GetSubDirectories(DirectoryInfo[] directoryInfos)
+        {
+            var result = directoryInfos.ToList();
+            foreach (var directory in directoryInfos)
             {
-                var tempDirectory = new DirectoryInfo(dir);
-                result.Add(tempDirectory);
+                result.AddRange(GetSubDirectories(directory.GetDirectories()));
             }
             return result.ToArray();
         }
@@ -72,6 +75,7 @@ namespace ArminTools.UtilityClasses
         public static void DeleteFolders(DirectoryInfo[] folders)
         {
             if (folders == null) throw new NullReferenceException(appLang.ErrorFileFolderNull);
+            folders = folders.Reverse().ToArray();
             foreach (var folder in folders)
             {
                 folder.Delete();
@@ -80,7 +84,7 @@ namespace ArminTools.UtilityClasses
 
         public static ByteUnit GetDirectorySizeAsByte(DirectoryInfo folder)
         {
-            FileInfo[] files = FolderUtility.GetFilesFromFolder(folder);
+            FileInfo[] files = GetFilesFromFolder(folder);
             long totalSize = 0;
             foreach (var file in files)
             {

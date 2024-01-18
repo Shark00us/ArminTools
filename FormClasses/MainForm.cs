@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 
 namespace ArminTools.FormClasses
@@ -164,7 +165,7 @@ namespace ArminTools.FormClasses
             }
 
         }
-        private void ControlMouseEnterorLeave(object sender, EventArgs e)
+        private void ControlMouseEnterOrLeave(object sender, EventArgs e)
         {
             var senderControl = sender as Control;
             if (senderControl != null)
@@ -202,11 +203,11 @@ namespace ArminTools.FormClasses
             }
             catch (Exception exc)
             {
-                MessageBox.Show(_appLang.Error + exc.Message);
+                MessageBox.Show(_appLang.Error + exc.Message,_appLang.Error);
             }
         }
 
-        private void ButtonStratExtractingClick(object sender, EventArgs e)
+        private void ButtonStartExtractingClick(object sender, EventArgs e)
         {
             var path = folderBrowserDialog.SelectedPath;
             if (!Conformation(path, _appLang.OperationExtraction)) return;
@@ -219,7 +220,7 @@ namespace ArminTools.FormClasses
             }
             catch (Exception exc)
             {
-                MessageBox.Show(_appLang.Error + exc.Message);
+                MessageBox.Show(_appLang.Error + exc.Message,_appLang.Error);
             }
         }
 
@@ -238,7 +239,7 @@ namespace ArminTools.FormClasses
             }
             catch (Exception exc)
             {
-                MessageBox.Show(_appLang.Error + exc.Message);
+                MessageBox.Show(_appLang.Error + exc.Message,_appLang.Error);
             }
         }
 
@@ -255,11 +256,10 @@ namespace ArminTools.FormClasses
             }
             catch (Exception exc)
             {
-                MessageBox.Show(_appLang.Error + exc.Message);
+                MessageBox.Show(_appLang.Error + exc.Message,_appLang.Error);
             }
 
         }
-
 
     }
 }

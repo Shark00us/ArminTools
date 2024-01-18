@@ -47,11 +47,10 @@ namespace ArminTools.FormClasses
 			}
 			base.Dispose(disposing);
 		}
-		
+
 		/// <summary>
-		/// This method is required for Windows Forms designer support.
-		/// Do not change the method contents inside the source code editor. The Forms designer might
-		/// not be able to load this method if it was changed manually.
+		/// Required method for Designer support - do not modify
+		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent()
 		{
@@ -75,7 +74,7 @@ namespace ArminTools.FormClasses
 			this.maskedTextBoxFromExt = new System.Windows.Forms.MaskedTextBox();
 			this.maskedTextBoxToExt = new System.Windows.Forms.MaskedTextBox();
 			this.labelHiddenChange = new System.Windows.Forms.Label();
-			((System.ComponentModel.ISupportInitialize)(this.groupSizeNumericUpDown)).BeginInit();
+			((System.ComponentModel.ISupportInitialize) (this.groupSizeNumericUpDown)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// buttonSelectPath
@@ -83,7 +82,7 @@ namespace ArminTools.FormClasses
 			this.buttonSelectPath.BackColor = System.Drawing.Color.MediumSpringGreen;
 			this.buttonSelectPath.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DimGray;
 			this.buttonSelectPath.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.HotTrack;
-			this.buttonSelectPath.Font = new System.Drawing.Font("Candara", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.buttonSelectPath.Font = new System.Drawing.Font("Candara", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
 			this.buttonSelectPath.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
 			this.buttonSelectPath.Location = new System.Drawing.Point(7, 58);
 			this.buttonSelectPath.Margin = new System.Windows.Forms.Padding(2);
@@ -93,12 +92,12 @@ namespace ArminTools.FormClasses
 			this.buttonSelectPath.Text = "#PLACEHOLDER#";
 			this.buttonSelectPath.UseVisualStyleBackColor = false;
 			this.buttonSelectPath.Click += new System.EventHandler(this.SelectPathButtonClick);
-			this.buttonSelectPath.MouseEnter += new System.EventHandler(this.ControlMouseEnterorLeave);
-			this.buttonSelectPath.MouseLeave += new System.EventHandler(this.ControlMouseEnterorLeave);
+			this.buttonSelectPath.MouseEnter += new System.EventHandler(this.ControlMouseEnterOrLeave);
+			this.buttonSelectPath.MouseLeave += new System.EventHandler(this.ControlMouseEnterOrLeave);
 			// 
 			// labelUnitSize
 			// 
-			this.labelUnitSize.Font = new System.Drawing.Font("Candara", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.labelUnitSize.Font = new System.Drawing.Font("Candara", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
 			this.labelUnitSize.Location = new System.Drawing.Point(136, 104);
 			this.labelUnitSize.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
 			this.labelUnitSize.Name = "labelUnitSize";
@@ -111,7 +110,7 @@ namespace ArminTools.FormClasses
 			// 
 			this.labelCredit.BackColor = System.Drawing.Color.Gold;
 			this.labelCredit.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.labelCredit.Font = new System.Drawing.Font("Candara", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.labelCredit.Font = new System.Drawing.Font("Candara", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
 			this.labelCredit.ForeColor = System.Drawing.Color.Blue;
 			this.labelCredit.Location = new System.Drawing.Point(0, 345);
 			this.labelCredit.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -121,8 +120,8 @@ namespace ArminTools.FormClasses
 			this.labelCredit.Text = "#PLACEHOLDER#";
 			this.labelCredit.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			this.labelCredit.Click += new System.EventHandler(this.LabelCreditClick);
-			this.labelCredit.MouseEnter += new System.EventHandler(this.ControlMouseEnterorLeave);
-			this.labelCredit.MouseLeave += new System.EventHandler(this.ControlMouseEnterorLeave);
+			this.labelCredit.MouseEnter += new System.EventHandler(this.ControlMouseEnterOrLeave);
+			this.labelCredit.MouseLeave += new System.EventHandler(this.ControlMouseEnterOrLeave);
 			// 
 			// folderBrowserDialog
 			// 
@@ -141,8 +140,8 @@ namespace ArminTools.FormClasses
 			this.buttonStartGrouping.Text = "#PLACEHOLDER#";
 			this.buttonStartGrouping.UseVisualStyleBackColor = true;
 			this.buttonStartGrouping.Click += new System.EventHandler(this.ButtonStartGroupingClick);
-			this.buttonStartGrouping.MouseEnter += new System.EventHandler(this.ControlMouseEnterorLeave);
-			this.buttonStartGrouping.MouseLeave += new System.EventHandler(this.ControlMouseEnterorLeave);
+			this.buttonStartGrouping.MouseEnter += new System.EventHandler(this.ControlMouseEnterOrLeave);
+			this.buttonStartGrouping.MouseLeave += new System.EventHandler(this.ControlMouseEnterOrLeave);
 			// 
 			// buttonStratExtracting
 			// 
@@ -155,9 +154,9 @@ namespace ArminTools.FormClasses
 			this.buttonStratExtracting.TabIndex = 3;
 			this.buttonStratExtracting.Text = "#PLACEHOLDER#";
 			this.buttonStratExtracting.UseVisualStyleBackColor = true;
-			this.buttonStratExtracting.Click += new System.EventHandler(this.ButtonStratExtractingClick);
-			this.buttonStratExtracting.MouseEnter += new System.EventHandler(this.ControlMouseEnterorLeave);
-			this.buttonStratExtracting.MouseLeave += new System.EventHandler(this.ControlMouseEnterorLeave);
+			this.buttonStratExtracting.Click += new System.EventHandler(this.ButtonStartExtractingClick);
+			this.buttonStratExtracting.MouseEnter += new System.EventHandler(this.ControlMouseEnterOrLeave);
+			this.buttonStratExtracting.MouseLeave += new System.EventHandler(this.ControlMouseEnterOrLeave);
 			// 
 			// labelline1
 			// 
@@ -198,12 +197,12 @@ namespace ArminTools.FormClasses
 			this.buttonStartExtChanger.Text = "#PLACEHOLDER#";
 			this.buttonStartExtChanger.UseVisualStyleBackColor = true;
 			this.buttonStartExtChanger.Click += new System.EventHandler(this.ButtonStartExtChangerClick);
-			this.buttonStartExtChanger.MouseEnter += new System.EventHandler(this.ControlMouseEnterorLeave);
-			this.buttonStartExtChanger.MouseLeave += new System.EventHandler(this.ControlMouseEnterorLeave);
+			this.buttonStartExtChanger.MouseEnter += new System.EventHandler(this.ControlMouseEnterOrLeave);
+			this.buttonStartExtChanger.MouseLeave += new System.EventHandler(this.ControlMouseEnterOrLeave);
 			// 
 			// labelExtFrom
 			// 
-			this.labelExtFrom.Font = new System.Drawing.Font("Candara", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.labelExtFrom.Font = new System.Drawing.Font("Candara", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
 			this.labelExtFrom.ForeColor = System.Drawing.SystemColors.ControlText;
 			this.labelExtFrom.Location = new System.Drawing.Point(29, 228);
 			this.labelExtFrom.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -215,7 +214,7 @@ namespace ArminTools.FormClasses
 			// 
 			// labelExtTo
 			// 
-			this.labelExtTo.Font = new System.Drawing.Font("Candara", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.labelExtTo.Font = new System.Drawing.Font("Candara", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
 			this.labelExtTo.Location = new System.Drawing.Point(29, 263);
 			this.labelExtTo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
 			this.labelExtTo.Name = "labelExtTo";
@@ -230,30 +229,18 @@ namespace ArminTools.FormClasses
 			this.groupSizeNumericUpDown.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.groupSizeNumericUpDown.Cursor = System.Windows.Forms.Cursors.IBeam;
 			this.groupSizeNumericUpDown.Enabled = false;
-			this.groupSizeNumericUpDown.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.groupSizeNumericUpDown.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
 			this.groupSizeNumericUpDown.InterceptArrowKeys = false;
 			this.groupSizeNumericUpDown.Location = new System.Drawing.Point(9, 102);
 			this.groupSizeNumericUpDown.Margin = new System.Windows.Forms.Padding(2);
-			this.groupSizeNumericUpDown.Maximum = new decimal(new int[] {
-			100000000,
-			0,
-			0,
-			0});
-			this.groupSizeNumericUpDown.Minimum = new decimal(new int[] {
-			1,
-			0,
-			0,
-			0});
+			this.groupSizeNumericUpDown.Maximum = new decimal(new int[] {100000000, 0, 0, 0});
+			this.groupSizeNumericUpDown.Minimum = new decimal(new int[] {1, 0, 0, 0});
 			this.groupSizeNumericUpDown.Name = "groupSizeNumericUpDown";
 			this.groupSizeNumericUpDown.Size = new System.Drawing.Size(126, 32);
 			this.groupSizeNumericUpDown.TabIndex = 1;
 			this.groupSizeNumericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
 			this.groupSizeNumericUpDown.ThousandsSeparator = true;
-			this.groupSizeNumericUpDown.Value = new decimal(new int[] {
-			650,
-			0,
-			0,
-			0});
+			this.groupSizeNumericUpDown.Value = new decimal(new int[] {650, 0, 0, 0});
 			// 
 			// labelline4
 			// 
@@ -270,7 +257,7 @@ namespace ArminTools.FormClasses
 			this.textBoxPath.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.textBoxPath.DetectUrls = false;
 			this.textBoxPath.Enabled = false;
-			this.textBoxPath.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.textBoxPath.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
 			this.textBoxPath.ForeColor = System.Drawing.Color.DarkRed;
 			this.textBoxPath.Location = new System.Drawing.Point(7, 13);
 			this.textBoxPath.Name = "textBoxPath";
@@ -282,8 +269,8 @@ namespace ArminTools.FormClasses
 			this.textBoxPath.Text = "#PLACEHOLDER#";
 			this.textBoxPath.ZoomFactor = 1.1F;
 			this.textBoxPath.Click += new System.EventHandler(this.TextBoxPathClick);
-			this.textBoxPath.MouseEnter += new System.EventHandler(this.ControlMouseEnterorLeave);
-			this.textBoxPath.MouseLeave += new System.EventHandler(this.ControlMouseEnterorLeave);
+			this.textBoxPath.MouseEnter += new System.EventHandler(this.ControlMouseEnterOrLeave);
+			this.textBoxPath.MouseLeave += new System.EventHandler(this.ControlMouseEnterOrLeave);
 			// 
 			// checkBoxFromExtEnabler
 			// 
@@ -294,7 +281,7 @@ namespace ArminTools.FormClasses
 			this.checkBoxFromExtEnabler.CheckState = System.Windows.Forms.CheckState.Checked;
 			this.checkBoxFromExtEnabler.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.checkBoxFromExtEnabler.Enabled = false;
-			this.checkBoxFromExtEnabler.Font = new System.Drawing.Font("Microsoft Sans Serif", 1.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+			this.checkBoxFromExtEnabler.Font = new System.Drawing.Font("Microsoft Sans Serif", 1.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (178)));
 			this.checkBoxFromExtEnabler.ForeColor = System.Drawing.SystemColors.ButtonShadow;
 			this.checkBoxFromExtEnabler.Location = new System.Drawing.Point(6, 232);
 			this.checkBoxFromExtEnabler.Name = "checkBoxFromExtEnabler";
@@ -309,7 +296,7 @@ namespace ArminTools.FormClasses
 			this.maskedTextBoxFromExt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.maskedTextBoxFromExt.CutCopyMaskFormat = System.Windows.Forms.MaskFormat.IncludePrompt;
 			this.maskedTextBoxFromExt.Enabled = false;
-			this.maskedTextBoxFromExt.Font = new System.Drawing.Font("Candara", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.maskedTextBoxFromExt.Font = new System.Drawing.Font("Candara", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
 			this.maskedTextBoxFromExt.HidePromptOnLeave = true;
 			this.maskedTextBoxFromExt.Location = new System.Drawing.Point(114, 227);
 			this.maskedTextBoxFromExt.Mask = ".AAAAAA";
@@ -326,7 +313,7 @@ namespace ArminTools.FormClasses
 			this.maskedTextBoxToExt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.maskedTextBoxToExt.CutCopyMaskFormat = System.Windows.Forms.MaskFormat.IncludePrompt;
 			this.maskedTextBoxToExt.Enabled = false;
-			this.maskedTextBoxToExt.Font = new System.Drawing.Font("Candara", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.maskedTextBoxToExt.Font = new System.Drawing.Font("Candara", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
 			this.maskedTextBoxToExt.HidePromptOnLeave = true;
 			this.maskedTextBoxToExt.Location = new System.Drawing.Point(114, 262);
 			this.maskedTextBoxToExt.Mask = ".AAAAAA";
@@ -339,7 +326,7 @@ namespace ArminTools.FormClasses
 			// 
 			// labelHiddenChange
 			// 
-			this.labelHiddenChange.Font = new System.Drawing.Font("Candara", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.labelHiddenChange.Font = new System.Drawing.Font("Candara", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
 			this.labelHiddenChange.Location = new System.Drawing.Point(9, 265);
 			this.labelHiddenChange.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
 			this.labelHiddenChange.Name = "labelHiddenChange";
@@ -375,18 +362,17 @@ namespace ArminTools.FormClasses
 			this.Controls.Add(this.labelHiddenChange);
 			this.Cursor = System.Windows.Forms.Cursors.Arrow;
 			this.DoubleBuffered = true;
-			this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+			this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (178)));
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			this.Icon = ((System.Drawing.Icon) (resources.GetObject("$this.Icon")));
 			this.Margin = new System.Windows.Forms.Padding(2);
 			this.MaximizeBox = false;
 			this.Name = "MainForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "#PLACEHOLDER#";
-			((System.ComponentModel.ISupportInitialize)(this.groupSizeNumericUpDown)).EndInit();
+			((System.ComponentModel.ISupportInitialize) (this.groupSizeNumericUpDown)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
-
 		}
 
 	}

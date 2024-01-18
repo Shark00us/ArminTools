@@ -20,7 +20,7 @@ namespace ArminTools.CoreClasses
 
         public FileGrouper(string path, long groupSize)
         {
-            FileUtility.CheckPathNullorEmpty(path);
+            FileUtility.CheckPathNullOrEmpty(path);
             if (groupSize < 1) throw new InvalidOperationException(appLang.ErrorGroupSize);
             this._path = path;
             this._groupSize = groupSize * 1048576;

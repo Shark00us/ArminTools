@@ -10,11 +10,7 @@ namespace ArminTools.CoreClasses
     /// </summary>
     internal static class Program
     {
-    	private static readonly ILanguage _applicationLanguage;
-    	public static ILanguage ApplicationLanguage 
-    	{ 
-    		get{return _applicationLanguage;} 
-    	}
+        public static ILanguage ApplicationLanguage { get; }
 
 
         [STAThread]
@@ -37,11 +33,11 @@ namespace ArminTools.CoreClasses
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            using (SelectConfigForm myForm = new SelectConfigForm(languages))
+            using (SelectConfigForm configForm = new SelectConfigForm(languages))
             {
-                if (myForm.ShowDialog() == DialogResult.OK)
+                if (configForm.ShowDialog() == DialogResult.OK)
                 {
-                    _applicationLanguage = myForm.SelectedLanguage;
+                    ApplicationLanguage = configForm.SelectedLanguage;
                 }
             }
 
