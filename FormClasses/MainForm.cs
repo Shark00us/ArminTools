@@ -7,7 +7,6 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 
 namespace ArminTools.FormClasses
@@ -21,6 +20,7 @@ namespace ArminTools.FormClasses
     {
 
         private readonly ILanguage _appLang = Program.ApplicationLanguage;
+        private const string DonationUrl = "https://t.ly/Q4-Dq";
 
         public MainForm()
         {
@@ -246,6 +246,14 @@ namespace ArminTools.FormClasses
         private void LabelCreditClick(object sender, EventArgs e)
         {
             MessageBox.Show(_appLang.ContactInfo, _appLang.Creator, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            try
+            {
+                Process.Start(DonationUrl);
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine(exception);
+            }
         }
 
         private void TextBoxPathClick(object sender, EventArgs e)
