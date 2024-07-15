@@ -10,7 +10,7 @@ namespace ArminTools.CoreClasses
     /// </summary>
     internal static class Program
     {
-        public static ILanguage ApplicationLanguage { get; }
+    	public readonly static ILanguage ApplicationLanguage;
 
 
         [STAThread]

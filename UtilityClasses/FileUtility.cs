@@ -21,8 +21,9 @@ namespace ArminTools.UtilityClasses
         private static string ModifyFileNameForDuplicateFiles(string path,FileInfo file,int loopCount)
         {
             CheckPathNullOrEmpty(Path.GetDirectoryName(file.FullName));
+            string newFileName = string.Format(" Copy({0})",loopCount);
             return Path.Combine(path,
-                Path.GetFileNameWithoutExtension(file.Name) + $" Copy({loopCount})" + file.Extension);
+                Path.GetFileNameWithoutExtension(file.Name) + newFileName + file.Extension);
         }
         private static void MoveFiles(string path, List<FileInfo> files)
         {

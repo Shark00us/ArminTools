@@ -87,9 +87,10 @@ namespace ArminTools.FormClasses
 
         private bool Conformation(string path, string operation)
         {
+        	string confirmMessage = string.Format("{0}{1}{2}\n\n{3}",_appLang.ConfirmFirstpart,operation,_appLang.ConfirmSecondpart,path);
             var dialogResult = MessageBox.Show
                 (
-                    $"{_appLang.ConfirmFirstpart}{operation}{_appLang.ConfirmSecondpart}\n\n{path}",
+                    confirmMessage,
                     operation,
                     MessageBoxButtons.YesNo, 
                     MessageBoxIcon.Warning
