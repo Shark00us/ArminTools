@@ -28,6 +28,7 @@ namespace ArminTools.FormClasses
             SetControlTexts();
             SetFont();
             IsRtl(_appLang.RTL);
+            AllowDragAndDropForPath();
         }
 
         //Methods
@@ -268,6 +269,54 @@ namespace ArminTools.FormClasses
                 MessageBox.Show(_appLang.Error + exc.Message,_appLang.Error);
             }
 
+        }
+
+        private void AllowDragAndDropForPath()
+        {
+            AllowDrop = true;
+            DragEnter += Form_DragEnter;
+            DragDrop += Form_DragDrop;
+        }
+
+        private void Form_DragEnter(object sender, DragEventArgs e)
+        {
+            // Check if the dragged data is a file or folder
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                e.Effect = DragDropEffects.Copy; // Allow copying
+            }
+            else
+            {
+                e.Effect = DragDropEffects.None; // Disallow
+            }
+        }
+
+        private void Form_DragDrop(object sender, DragEventArgs e)
+        {
+            // Get the dropped data
+            string[] droppedItems = (string[])e.Data.GetData(DataFormats.FileDrop);
+
+            // Ensure only one item is processed (first item in the array)
+            if (droppedItems.Length > 0)
+            {
+                string item = droppedItems[0]; // Get the first dropped item
+
+                // Clear the TextBox
+                textBoxPath.Clear();
+
+                // Check if it's a folder or file
+                if (Directory.Exists(item)) // Check if it's a folder
+                {
+                    folderBrowserDialog.SelectedPath = item; // Display folder path
+                    EnableControls();
+                }
+                else if (File.Exists(item)) // Check if it's a file
+                {
+                    string folderPath = Path.GetDirectoryName(item);
+                    folderBrowserDialog.SelectedPath = folderPath; // Display folder path
+                    EnableControls();
+                }
+            }
         }
 
     }
