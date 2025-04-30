@@ -34,7 +34,8 @@ namespace ArminTools.UtilityClasses
                 var destinationFilePath = Path.Combine(path,fle.Name);
                 while (File.Exists(destinationFilePath))
                 {
-                    destinationFilePath = ModifyFileNameForDuplicateFiles(path,fle, loopCount);
+                    destinationFilePath = Path.Combine(path,fle.Name+loopCount);
+                    //destinationFilePath = ModifyFileNameForDuplicateFiles(path,fle, loopCount);
                     loopCount++;
                 }
                 fle.MoveTo(destinationFilePath);

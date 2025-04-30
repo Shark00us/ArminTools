@@ -36,11 +36,7 @@ namespace ArminTools.UtilityClasses
             FileUtility.CheckPathNullOrEmpty(path);
             if (folderCount < 1) throw new IndexOutOfRangeException();
 
-            char folderName = '1';
-            if (charInsteadOfNumber)
-            {
-                folderName = 'A';
-            }
+            char folderName = charInsteadOfNumber ? 'A' : '1';
 
             List<DirectoryInfo> createdFolders = new List<DirectoryInfo>();
 

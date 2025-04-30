@@ -86,7 +86,7 @@ namespace ArminTools.FormClasses
             Process.Start(path);
         }
 
-        private bool Conformation(string path, string operation)
+        private bool Confirmation(string path, string operation)
         {
         	string confirmMessage = string.Format("{0}{1}{2}\n\n{3}",_appLang.ConfirmFirstpart,operation,_appLang.ConfirmSecondpart,path);
             var dialogResult = MessageBox.Show
@@ -192,7 +192,7 @@ namespace ArminTools.FormClasses
         private void ButtonStartGroupingClick(object sender, EventArgs e)
         {
             var path = folderBrowserDialog.SelectedPath;
-            if (!Conformation(path, _appLang.OperationGrouping)) return;
+            if (!Confirmation(path, _appLang.OperationGrouping)) return;
             try
             {
                 long groupSize = RemoveThousandSeparator(groupSizeNumericUpDown.Text);
@@ -212,24 +212,24 @@ namespace ArminTools.FormClasses
         private void ButtonStartExtractingClick(object sender, EventArgs e)
         {
             var path = folderBrowserDialog.SelectedPath;
-            if (!Conformation(path, _appLang.OperationExtraction)) return;
-            try
-            {
+            if (!Confirmation(path, _appLang.OperationExtraction)) return;
+            //try
+           // {
                 var dirs = FolderUtility.GetSubDirectories(path);
                 FileUtility.MoveFiles(path, dirs);
                 FolderUtility.DeleteFolders(dirs);
                 Success(_appLang.ExtractSuccess, path);
-            }
-            catch (Exception exc)
-            {
-                MessageBox.Show(_appLang.Error + exc.Message,_appLang.Error);
-            }
+            //}
+            //catch (Exception exc)
+            //{
+            //    MessageBox.Show(_appLang.Error + exc.Message,_appLang.Error);
+           // }
         }
 
         private void ButtonStartExtChangerClick(object sender, EventArgs e)
         {
             var path = folderBrowserDialog.SelectedPath;
-            if (!Conformation(path, _appLang.OperationExtChange)) return;
+            if (!Confirmation(path, _appLang.OperationExtChange)) return;
             try
             {
                 var toExt = maskedTextBoxToExt.Text;
